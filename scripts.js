@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function fetchNews() {
     const newsContainer = document.getElementById('news-container');
-    const newsAPI = 'https://example-news-api.com/latest-news'; 
+    const newsAPI = 'https://example-news-api.com/latest-news'; // Replace with a real news API endpoint
     
     fetch(newsAPI)
         .then(response => response.json())
@@ -34,16 +34,20 @@ function fetchWeather() {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
             const weatherAPI = 'https://api.open-meteo.com/v1/forecast';
-            const url = `${weatherAPI}?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
+            const url = `${weatherAPI}?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m`;
 
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    const weather = data.current_weather;
+                    const temperatures = data.hourly.temperature_2m;
+                    const now = new Date();
+                    const hours = temperatures.length;
+                    const temperatureHTML = temperatures
+                        .map((temp, index) => `<p>Hour ${index + 1}: ${temp}°C</p>`)
+                        .join('');
                     weatherContainer.innerHTML = `
-                        <p>Temperature: ${weather.temperature_2m}°C</p>
-                        <p>Weather: ${getWeatherDescription(weather.weathercode)}</p>
-                        <p>Wind Speed: ${weather.windspeed_10m} km/h</p>
+                        <p>Current Hourly Temperatures:</p>
+                        ${temperatureHTML}
                     `;
                 })
                 .catch(error => {
@@ -57,15 +61,4 @@ function fetchWeather() {
     } else {
         weatherContainer.innerHTML = '<p>Geolocation is not supported by this browser.</p>';
     }
-}
-
-function getWeatherDescription(code) {
-    const descriptions = {
-        0: 'Clear sky',
-        1: 'Mainly clear',
-        2: 'Partly cloudy',
-        3: 'Overcast',
-        45: 'Fog',
-    };
-    return descriptions[code] || 'Unknown';
 }
