@@ -51,7 +51,7 @@ function fetchWeather() {
                     `;
                 })
                 .catch(error => {
-                    weatherContainer.innerHTML = '<p>Failed to load weather.</p>';
+                    weatherContainer.innerHTML = '<p>Failed to load weathe.</p>';
                     console.error('Error fetching weather:', error);
                 });
         }, error => {
