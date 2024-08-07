@@ -40,18 +40,17 @@ function fetchWeather() {
                 .then(response => response.json())
                 .then(data => {
                     const temperatures = data.hourly.temperature_2m;
-                    const now = new Date();
-                    const hours = temperatures.length;
-                    const temperatureHTML = temperatures
-                        .map((temp, index) => `<p>Hour ${index + 1}: ${temp}°C</p>`)
+                    const timeLabels = data.hourly.time; // Assuming the API provides time labels
+                    const weatherHTML = temperatures
+                        .map((temp, index) => `<p>${timeLabels[index]}: ${temp}°C</p>`)
                         .join('');
                     weatherContainer.innerHTML = `
-                        <p>Current Hourly Temperatures:</p>
-                        ${temperatureHTML}
+                        <h2>Hourly Temperatures</h2>
+                        ${weatherHTML}
                     `;
                 })
                 .catch(error => {
-                    weatherContainer.innerHTML = '<p>Failed to load weathe.</p>';
+                    weatherContainer.innerHTML = '<p>Failed to load weather.</p>';
                     console.error('Error fetching weather:', error);
                 });
         }, error => {
