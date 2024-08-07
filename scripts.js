@@ -28,7 +28,7 @@ function fetchNews() {
 
 function fetchWeather() {
     const weatherContainer = document.getElementById('weather-container');
-    const weatherAPI = 'https://api.openweathermap.org/data/2.5/weather?q=YourCity&appid=YOUR_API_KEY';
+    const weatherAPI = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m';
     
     fetch(weatherAPI)
         .then(response => response.json())
