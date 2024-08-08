@@ -48,7 +48,7 @@ function fetchWeather(latitude, longitude) {
 
 function fetchNews() {
     const newsContainer = document.getElementById('news-container');
-    const newsAPI = 'https://gnews.io/api/v4/top-headlines?country=za&apikey=YOUR_API_KEY';
+    const newsAPI = 'https://newsdata.io/api/1/news?apikey=pub_50370d7240f45620abdbde99f706edb2aebac&country=za';
 
     fetch(newsAPI)
         .then(response => {
@@ -58,11 +58,11 @@ function fetchNews() {
             return response.json();
         })
         .then(data => {
-            if (data.articles.length === 0) {
+            if (!data.results || data.results.length === 0) {
                 newsContainer.innerHTML = '<p>No news articles found.</p>';
                 return;
             }
-            data.articles.forEach(article => {
+            data.results.forEach(article => {
                 const articleElement = document.createElement('div');
                 articleElement.classList.add('article');
                 articleElement.innerHTML = `
