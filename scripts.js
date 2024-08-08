@@ -49,7 +49,6 @@ function fetchWeather(latitude, longitude) {
 function fetchNews() {
     const newsContainer = document.getElementById('news-container');
     const newsAPI = 'https://newsapi.org/v2/top-headlines?country=za&apiKey=32df689f5aab45c090599f0ec436e979';
-
     fetch(newsAPI)
         .then(response => {
             if (!response.ok) {
