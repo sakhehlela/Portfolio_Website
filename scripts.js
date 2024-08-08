@@ -48,11 +48,20 @@ function fetchWeather(latitude, longitude) {
 
 function fetchNews() {
     const newsContainer = document.getElementById('news-container');
-    const newsAPI = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=32df689f5aab45c090599f0ec436e979';
+    const newsAPI = 'https://newsapi.org/v2/top-headlines?country=za&apiKey=32df689f5aab45c090599f0ec436e979';
 
     fetch(newsAPI)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
+            if (data.articles.length === 0) {
+                newsContainer.innerHTML = '<p>No news articles found.</p>';
+                return;
+            }
             data.articles.forEach(article => {
                 const articleElement = document.createElement('div');
                 articleElement.classList.add('article');
@@ -65,7 +74,7 @@ function fetchNews() {
             });
         })
         .catch(error => {
-            newsContainer.innerHTML = '<p>Failed to load news.</p>';
+            newsContainer.innerHTML = `<p>Failed to load news: ${error.message}</p>`;
             console.error('Error fetching news:', error);
         });
 }
