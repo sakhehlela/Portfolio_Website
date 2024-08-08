@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function fetchNews() {
     const newsContainer = document.getElementById('news-container');
-    const newsAPI = 'https://example-news-api.com/latest-news'; // Replace with a real news API endpoint
+    const newsAPI = 'https://www.news24.com/'; 
     
     fetch(newsAPI)
         .then(response => response.json())
@@ -40,7 +40,7 @@ function fetchWeather() {
                 .then(response => response.json())
                 .then(data => {
                     const temperatures = data.hourly.temperature_2m;
-                    const timeLabels = data.hourly.time; // Assuming the API provides time labels
+                    const timeLabels = data.hourly.time; 
                     const weatherHTML = temperatures
                         .map((temp, index) => `<p>${timeLabels[index]}: ${temp}°C</p>`)
                         .join('');
