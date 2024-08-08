@@ -26,7 +26,7 @@ function getLocationAndWeather() {
 
 function fetchWeather(latitude, longitude) {
     const weatherContainer = document.getElementById('weather-container');
-    const weatherAPI = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m`;
+    const weatherAPI = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=apparent_temperature&timezone=Africa%2FCairo`;
     const reverseGeocodeAPI = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`;
 
     Promise.all([
@@ -35,9 +35,10 @@ function fetchWeather(latitude, longitude) {
     ])
     .then(([weatherData, locationData]) => {
         const locationName = locationData.locality || locationData.city || "Unknown Location";
+        const temperature = weatherData.current.apparent_temperature;
         weatherContainer.innerHTML = `
             <h3>Weather in ${locationName}</h3>
-            <p>Temperature: ${weatherData.hourly.temperature_2m[0]}°C</p>
+            <p>Temperature: ${temperature}°C</p>
         `;
     })
     .catch(error => {
@@ -78,3 +79,4 @@ function fetchNews() {
             console.error('Error fetching news:', error);
         });
 }
+
