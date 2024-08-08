@@ -18,12 +18,17 @@ header {
     z-index: 1000;
 }
 
-nav ul {
-    list-style: none;
+nav {
     display: flex;
     justify-content: center;
+}
+
+nav ul {
+    list-style: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
 }
 
 nav ul li {
@@ -143,6 +148,11 @@ form button:hover, button:hover {
 @media (max-width: 600px) {
     nav ul {
         flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 0.5rem 0;
     }
 
     .profile-photo {
