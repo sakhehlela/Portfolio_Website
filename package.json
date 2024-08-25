@@ -13,6 +13,8 @@
     "express": "^4.19.2"
   },
   "devDependencies": {
-    "jasmine": "^5.2.0"
+    "jasmine": "^5.2.0",
+    "stylelint": "^16.8.1",
+    "stylelint-config-standard": "^36.0.1"
   }
 }
