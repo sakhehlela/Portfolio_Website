@@ -1,179 +1,79 @@
-/* Font and Body Styles */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
+/* Global Styles */
 body {
-    font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    color: #333;
-    background-color: #f4f4f4;
-    line-height: 1.6;
+    font-family: Arial, sans-serif;
+    padding-top: 60px; /* Adjusts for fixed navbar height */
+    background-image: url('WhatsApp Image 2024-09-03 at 10.51.54 PM.jpeg'); /* Sets the background image */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
 }
 
-/* Header */
-header {
-    background: linear-gradient(45deg, #005f99, #003f66);
-    color: #fff;
-    padding: 1rem 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
-
-/* Navigation */
+/* Navigation Bar */
 nav {
-    display: flex;
-    justify-content: center;
+    display: flex; /* Enables Flexbox */
+    justify-content: center; /* Centers the items horizontally */
+    align-items: center; /* Centers the items vertically */
+    position: fixed; /* Fixes the navbar at the top */
+    top: 0; /* Positions the navbar at the top */
+    width: 100%; /* Makes the navbar full width */
+    background-color: rgba(0, 115, 230, 0.8); /* Semi-transparent background */
+    z-index: 1000; /* Keeps it on top of other content */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
 }
 
 nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
+    display: flex; /* Displays the menu items horizontally */
+    list-style-type: none; /* Removes bullet points */
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
 }
 
 nav ul li {
-    margin: 0 1rem;
+    padding: 15px 20px; /* Adds padding around menu items */
 }
 
 nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
+    color: white; /* Menu item text color */
+    text-decoration: none; /* Removes underline */
+    font-weight: bold; /* Makes text bold */
+    transition: color 0.3s; /* Adds smooth transition for hover effect */
 }
 
 nav ul li a:hover {
-    text-decoration: underline;
+    color: #ffcc00; /* Changes text color on hover */
 }
 
-/* Main Content */
-main {
-    padding: 2rem;
-    text-align: center;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 900px;
-    margin: 5rem auto 2rem;
-    border-radius: 8px;
-}
-
-main section {
-    margin-bottom: 2rem;
-}
-
-h1 {
-    margin: 0 0 1rem;
-    font-size: 2.5rem;
-    color: #005f99;
-    font-weight: 700;
-}
-
-h2, h3 {
-    margin: 0 0 1rem;
-    font-size: 2rem;
-    color: #003f66;
-    font-weight: 700;
-}
-
-p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-ul li {
-    margin: 0.5rem 0;
-    font-size: 1.1rem;
-}
-
-a {
-    color: #005f99;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* Buttons */
-form button, button {
-    background-color: #005f99;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-form button:hover, button:hover {
-    background-color: #004080;
-}
-
-/* Profile Photo */
-.profile-photo {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center top;
-    margin: 1rem 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* News and Weather Containers */
-#news, #weather {
-    margin-bottom: 2rem;
-}
-
-#news-container, #weather-container {
-    background-color: #fff;
-    padding: 1.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: left;
-}
-
-.article {
-    margin-bottom: 1.5rem;
-}
-
-/* Footer */
-footer {
-    background: #003f66;
-    color: #fff;
-    text-align: center;
-    padding: 1rem 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 600px) {
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
     nav ul {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column; /* Stacks menu items vertically */
+        background-color: rgba(0, 115, 230, 0.8); /* Keeps background color semi-transparent */
+        width: 100%; /* Full width */
+        position: fixed; /* Keeps menu fixed */
+        top: 0; /* At the top */
+        left: 0; /* Aligns to the left */
+        text-align: center; /* Centers text */
+        display: none; /* Initially hidden on mobile */
     }
 
     nav ul li {
-        margin: 0.5rem 0;
+        padding: 10px 0; /* Adjust padding for mobile view */
     }
 
-    .profile-photo {
-        width: 100%;
+    /* Toggle Button Styles */
+    .menu-toggle {
+        display: block; /* Shows toggle button */
+        background-color: #0073e6;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+        text-align: center;
+        font-weight: bold;
     }
+}
+
+/* Toggle Button Hidden by Default on Desktop */
+.menu-toggle {
+    display: none;
 }
