@@ -1,11 +1,8 @@
-document.getElementById("nav-toggle").addEventListener("click", function () {
-  const navLinks = document.querySelector(".nav-links");
-  navLinks.style.display = navLinks.style.display === "flex" ? "none" : "flex";
-});
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleButton = document.querySelector(".menu-toggle");
+  const navMenu = document.querySelector("nav ul");
 
-document
-  .getElementById("contact-form")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-    alert("Thank you for your message!");
+  toggleButton.addEventListener("click", function () {
+    navMenu.style.display = navMenu.style.display === "flex" ? "none" : "flex";
   });
+});
