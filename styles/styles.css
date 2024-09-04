@@ -9,7 +9,7 @@ body {
 
 /* Navigation Bar */
 nav {
-    display: flex; /* Enables Flexbox */
+    display: flex; /* Enables Flexbox for navbar */
     justify-content: center; /* Centers the items horizontally */
     align-items: center; /* Centers the items vertically */
     position: fixed; /* Fixes the navbar at the top */
@@ -42,7 +42,22 @@ nav ul li a:hover {
     color: #ffcc00; /* Changes text color on hover */
 }
 
-/* Media Query for Mobile Devices */
+/* Responsive Layout with CSS Grid */
+main {
+    display: grid; /* Enables Grid Layout */
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+    gap: 20px; /* Adds space between grid items */
+    padding: 20px; /* Adds padding around the main content */
+}
+
+section {
+    background-color: #333; /* Section background */
+    padding: 20px; /* Section padding */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Responsive Media Query for Smaller Screens */
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column; /* Stacks menu items vertically */
@@ -69,15 +84,13 @@ nav ul li a:hover {
         text-align: center;
         font-weight: bold;
     }
+
+    main {
+        grid-template-columns: 1fr; /* Stacks all sections vertically on smaller screens */
+    }
 }
 
 /* Toggle Button Hidden by Default on Desktop */
 .menu-toggle {
     display: none;
-}
-
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block; /* Shows the toggle button on mobile */
-    }
 }
